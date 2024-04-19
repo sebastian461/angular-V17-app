@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './change-detection.component.html',
-  styles: ``
+  styles: ``,
 })
-export class ChangeDetectionComponent {
-
-}
+export default class ChangeDetectionComponent {}

@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './users.component.html',
-  styles: ``
+  styles: ``,
 })
-export class UsersComponent {
-
-}
+export default class UsersComponent {}
