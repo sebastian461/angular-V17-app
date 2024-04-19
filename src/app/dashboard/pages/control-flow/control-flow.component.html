@@ -15,4 +15,15 @@
     <p>************</p>
     }
   </div>
+
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-3xl">{{ grade() }}</h2>
+    @switch (grade()) { @case ("A") {
+    <p>Aprobado</p>
+    } @case ("B") {
+    <p>Suspenso</p>
+    } @case ("F") {
+    <p>Reprobado</p>
+    } }
+  </div>
 </section>
