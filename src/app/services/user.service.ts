@@ -1,7 +1,11 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { User, UserResponse } from '../interfaces/req-response.interfaces';
+import type {
+  User,
+  UserResponse,
+  UsersResponse,
+} from '../interfaces/req-response.interfaces';
 import { HttpClient } from '@angular/common/http';
-import { delay } from 'rxjs';
+import { delay, map } from 'rxjs';
 
 interface State {
   users: User[];
@@ -25,7 +29,7 @@ export class UserService {
 
   constructor() {
     this.http
-      .get<UserResponse>('https://reqres.in/api/users')
+      .get<UsersResponse>('https://reqres.in/api/users')
       .pipe(delay(1000))
       .subscribe((res) => {
         this.#state.set({
@@ -33,5 +37,12 @@ export class UserService {
           users: res.data,
         });
       });
+  }
+
+  getUserById(id: string) {
+    this.http.get<UserResponse>(`https://reqres.in/api/users/${id}`).pipe(
+      delay(1000),
+      map((resp) => resp.data)
+    );
   }
 }
